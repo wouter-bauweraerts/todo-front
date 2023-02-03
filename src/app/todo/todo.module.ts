@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TodoListComponent} from './components/todo-list/todo-list.component';
+import {TodoSandbox} from './sandboxes/todo.sandbox';
+import {TodoService} from './services/todo.service';
 
 
 
@@ -10,6 +12,10 @@ import {TodoListComponent} from './components/todo-list/todo-list.component';
   ],
   imports: [
     CommonModule
+  ],
+  providers: [
+    TodoSandbox,
+    TodoService
   ]
 })
 export class TodoModule { }

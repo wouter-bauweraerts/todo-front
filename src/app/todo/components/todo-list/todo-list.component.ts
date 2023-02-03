@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TodoSandbox} from '../../sandboxes/todo.sandbox';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private todoSb: TodoSandbox) { }
+
+  public todos$: Observable<any> = this.todoSb.todos$;
 
   ngOnInit(): void {
+    this.todoSb.fetchTodos();
   }
 
 }

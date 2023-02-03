@@ -15,3 +15,13 @@ export const LoadTodosFailure = createAction(
   '[TODO]: Failed to load todos',
   props<{error: HttpErrorResponse}>()
 )
+
+export const CompleteTodo = createAction(
+  '[TODO]: Complete todo',
+  props<{todoId: number}>()
+)
+
+export const PatchTodo = createAction(
+  '[TODO]: Patch todo',
+  props<{todo: TodoType}>()
+)

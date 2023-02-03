@@ -11,12 +11,14 @@ import {initialState, reducerFactory} from './statemanagement/reducers/reducers'
 import {TodoEffects} from './statemanagement/effects/todo.effects';
 import {HttpClientModule} from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

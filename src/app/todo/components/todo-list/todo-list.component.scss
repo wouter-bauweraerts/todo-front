@@ -1,0 +1,19 @@
+.todo-table {
+  width: 100%;
+
+  .mat-column-description {
+    width: 80%;
+  }
+
+  .mat-column-complete {
+    width: 20%;
+    margin: auto;
+    text-align: center;
+
+    mat-icon {
+      &.complete {
+        color: green;
+      }
+    }
+  }
+}

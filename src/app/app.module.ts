@@ -2,7 +2,7 @@ import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
+import {AppComponent} from './components/app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TodoModule} from './todo/todo.module';
 import {StoreModule} from '@ngrx/store';

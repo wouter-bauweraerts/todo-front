@@ -1,0 +1,4 @@
+<app-todo-table *ngIf="!!ds$"
+                [ds]="ds$ | async"
+                (complete)="onComplete($event)">
+</app-todo-table>

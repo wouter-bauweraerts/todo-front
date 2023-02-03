@@ -3,6 +3,14 @@
 
   .mat-column-description {
     width: 80%;
+
+    .description-text {
+      display: inline-block;
+    }
+
+    button {
+      float: left;
+    }
   }
 
   .mat-column-complete {

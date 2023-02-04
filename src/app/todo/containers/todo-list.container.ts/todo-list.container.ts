@@ -73,4 +73,30 @@ export class TodoListContainer implements OnInit, OnDestroy {
   showAllTodos(showAll: boolean) {
     this.todoSb.showAll(showAll);
   }
+
+  openAddTodo() {
+    const addTodoDialog = this.dialog.open(
+      EditTodoComponent,
+      {
+        data: {
+          window: {
+            title: 'Add todo',
+            cancel: 'Cancel',
+            confirm: 'Submit'
+          },
+          todo: {
+            todoId: -1,
+            description: '',
+            complete: false
+          }
+        }
+      }
+    );
+
+    this.subscriptions.push(addTodoDialog.afterClosed().subscribe(todo => {
+      if (!!todo) {
+        this.todoSb.addTodo(todo)
+      }
+    }));
+  }
 }

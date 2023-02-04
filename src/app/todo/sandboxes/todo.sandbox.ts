@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../statemanagement/app-state';
 import {
-  CompleteTodo,
+  CompleteTodo, CreateTodo,
   FilterTodos,
   LoadIncompleteTodos,
   LoadTodos,
@@ -41,4 +41,7 @@ export class TodoSandbox {
   }
 
 
+  addTodo(todo: TodoType) {
+    this.store.dispatch(CreateTodo({description: todo.description}))
+  }
 }

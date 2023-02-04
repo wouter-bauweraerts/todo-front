@@ -10,7 +10,7 @@ import {
   LoadTodos,
   TodoFailure,
   PatchTodo,
-  SetTodos, UpdateTodo
+  SetTodos, UpdateTodo, CreateTodo
 } from '../actions/todo.actions';
 
 @Injectable()
@@ -54,6 +54,15 @@ export class TodoEffects {
   updateTodo$ = createEffect(() => this.actions.pipe(
     ofType(UpdateTodo),
     exhaustMap(action => this.todoService.updateTodo(action.todoId, action.description).pipe(
+      map(todo => PatchTodo({todo}))
+    )),
+    catchError(err => of(TodoFailure({error: err.msg})))
+  ))
+
+  // @ts-ignore
+  createTodo$ = createEffect(() => this.actions.pipe(
+    ofType(CreateTodo),
+    exhaustMap(action => this.todoService.createTodo(action.description).pipe(
       map(todo => PatchTodo({todo}))
     )),
     catchError(err => of(TodoFailure({error: err.msg})))

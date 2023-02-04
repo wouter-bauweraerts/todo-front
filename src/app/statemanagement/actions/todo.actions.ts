@@ -39,3 +39,8 @@ export const UpdateTodo = createAction(
   '[TODO]: Update todo',
   props<{todoId: number, description: string}>()
 )
+
+export const CreateTodo = createAction(
+  '[TODO]: Create todo',
+  props<{description: string}>()
+)

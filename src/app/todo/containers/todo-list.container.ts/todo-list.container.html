@@ -8,4 +8,11 @@
                   (edit)="onEdit($event)"
                   (complete)="onComplete($event)">
   </app-todo-table>
+  <button mat-fab
+          color="primary"
+          id="add-task-btn"
+          (click)="openAddTodo()"
+  >
+    <mat-icon>add_task</mat-icon>
+  </button>
 </div>

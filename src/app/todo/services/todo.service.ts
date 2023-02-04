@@ -7,6 +7,7 @@ import {TodoType} from '../../types/todo/todo.type';
 export class TodoService {
   constructor(private http: HttpClient) {
   }
+
   public loadTodos(): Observable<TodoType[]> {
     return this.http.get<TodoType[]>('/api/todo');
   }
@@ -21,5 +22,9 @@ export class TodoService {
 
   public updateTodo(todoId: number, description: string): Observable<TodoType> {
     return this.http.put<TodoType>(`/api/todo/${todoId}`, {description});
+  }
+
+  public createTodo(description: string): Observable<TodoType> {
+    return this.http.post<TodoType>('/api/todo', {description});
   }
 }

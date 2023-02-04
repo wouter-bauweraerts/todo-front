@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {AppState} from '../../statemanagement/app-state';
+import {AppState} from '../../../statemanagement/app-state';
 import {
   CompleteTodo, CreateTodo,
   FilterTodos,
   LoadIncompleteTodos,
   LoadTodos,
   UpdateTodo
-} from '../../statemanagement/actions/todo.actions';
-import {TodoType} from '../../types/todo/todo.type';
+} from '../../../statemanagement/actions/todo.actions';
+import {TodoType} from '../../../types/todo/todo.type';
 
 @Injectable()
 export class TodoSandbox {

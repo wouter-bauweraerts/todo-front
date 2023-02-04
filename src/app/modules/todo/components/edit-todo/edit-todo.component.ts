@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {TodoType} from '../../../types/todo/todo.type';
-import {TodoDialog} from '../../../types/todo/todo-dialog.type';
+import {TodoType} from '../../../../types/todo/todo.type';
+import {TodoDialog} from '../../../../types/todo/todo-dialog.type';
 
 @Component({
   selector: 'app-edit-todo-dialog',

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {AppState} from '../app-state';
 import {Store} from '@ngrx/store';
-import {TodoService} from '../../todo/services/todo.service';
+import {TodoService} from '../../modules/todo/services/todo.service';
 import {catchError, exhaustMap, map, of} from 'rxjs';
 import {
   CompleteTodo,

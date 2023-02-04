@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './components/app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TodoModule} from './todo/todo.module';
+import {TodoModule} from './modules/todo/todo.module';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {initialState, reducerFactory} from './statemanagement/reducers/reducers';

@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {map, Observable, Subscription} from 'rxjs';
 import {TodoSandbox} from '../../sandboxes/todo.sandbox';
-import {TodoDataSource} from '../../../types/todo/todo-datasource.type';
+import {TodoDataSource} from '../../../../types/todo/todo-datasource.type';
 import {MatDialog} from '@angular/material/dialog';
-import {TodoType} from '../../../types/todo/todo.type';
+import {TodoType} from '../../../../types/todo/todo.type';
 import {EditTodoComponent} from '../../components/edit-todo/edit-todo.component';
 
 @Component({

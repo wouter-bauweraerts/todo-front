@@ -5,6 +5,7 @@
   </app-todo-filter>
   <app-todo-table *ngIf="!!ds$"
                   [ds]="ds$ | async"
+                  (edit)="onEdit($event)"
                   (complete)="onComplete($event)">
   </app-todo-table>
 </div>

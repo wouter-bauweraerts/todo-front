@@ -11,6 +11,9 @@ import {TodoListContainer} from './containers/todo-list.container.ts/todo-list.c
 import {TodoFilterComponent} from './components/todo-filter/todo-filter.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {FormsModule} from '@angular/forms';
+import {EditTodoComponent} from './components/edit-todo/edit-todo.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -18,7 +21,8 @@ import {FormsModule} from '@angular/forms';
   declarations: [
     TodoListContainer,
     TodoTableComponent,
-    TodoFilterComponent
+    TodoFilterComponent,
+    EditTodoComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,9 @@ import {FormsModule} from '@angular/forms';
     MatIconModule,
     MatButtonModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    MatInputModule
   ],
   providers: [
     TodoSandbox,

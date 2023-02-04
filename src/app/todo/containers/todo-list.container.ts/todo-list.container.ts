@@ -2,6 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {map, Observable, Subscription} from 'rxjs';
 import {TodoSandbox} from '../../sandboxes/todo.sandbox';
 import {TodoDataSource} from '../../../types/todo/todo-datasource.type';
+import {MatDialog} from '@angular/material/dialog';
+import {TodoType} from '../../../types/todo/todo.type';
+import {EditTodoComponent} from '../../components/edit-todo/edit-todo.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -20,7 +23,9 @@ export class TodoListContainer implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private todoSb: TodoSandbox) {
+  constructor(private todoSb: TodoSandbox,
+              private dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
@@ -37,6 +42,28 @@ export class TodoListContainer implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  onEdit(todo: TodoType) {
+    const editDialog = this.dialog.open(
+      EditTodoComponent,
+      {
+        data: {
+          window: {
+            title: 'Edit todo',
+            cancel: 'Cancel',
+            confirm: 'Update'
+          },
+          todo: {...todo}
+        }
+      }
+    );
+
+    this.subscriptions.push(editDialog.afterClosed().subscribe(todo => {
+      if (!!todo) {
+        this.todoSb.updateTodo(todo)
+      }
+    }));
   }
 
   onComplete(todoId: number) {

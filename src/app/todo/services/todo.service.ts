@@ -18,4 +18,8 @@ export class TodoService {
   public loadIncompleteTodos(): Observable<TodoType[]> {
     return this.http.get<TodoType[]>('/api/todo/incomplete');
   }
+
+  public updateTodo(todoId: number, description: string): Observable<TodoType> {
+    return this.http.put<TodoType>(`/api/todo/${todoId}`, {description});
+  }
 }

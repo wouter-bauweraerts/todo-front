@@ -15,8 +15,8 @@ export const SetTodos = createAction(
   props<{todos: TodoType[]}>()
 );
 
-export const LoadTodosFailure = createAction(
-  '[TODO]: Failed to load todos',
+export const TodoFailure = createAction(
+  '[TODO]: Operation failed',
   props<{error: HttpErrorResponse}>()
 )
 
@@ -33,4 +33,9 @@ export const PatchTodo = createAction(
 export const FilterTodos = createAction(
   '[TODO]: Filter todos',
   props<{showAll: boolean}>()
+)
+
+export const UpdateTodo = createAction(
+  '[TODO]: Update todo',
+  props<{todoId: number, description: string}>()
 )

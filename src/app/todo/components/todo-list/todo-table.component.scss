@@ -2,14 +2,10 @@
   width: 100%;
 
   .mat-column-description {
-    width: 80%;
 
     .description-text {
       display: inline-block;
-    }
-
-    button {
-      float: left;
+      padding: 1rem;
     }
   }
 
@@ -23,5 +19,14 @@
         color: green;
       }
     }
+  }
+
+  .table-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0 5px;
+    padding: 5px;
+    align-content: center;
   }
 }

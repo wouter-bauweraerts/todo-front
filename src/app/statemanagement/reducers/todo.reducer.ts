@@ -4,13 +4,15 @@ import * as TodoActions from '../actions/todo.actions';
 import {TodoType} from '../../types/todo/todo.type';
 
 export const initialState: TodoState = {
-  todos: []
+  todos: [],
+  showAll: true
 }
 
 export const todoReducer = createReducer(
   initialState,
   on(TodoActions.SetTodos, (state, {todos}) => ({...state, todos: sort(todos)})),
-  on(TodoActions.PatchTodo, (state, {todo}) => ({...state, todos: sort(patchTodo(state, todo))}))
+  on(TodoActions.PatchTodo, (state, {todo}) => ({...state, todos: sort(patchTodo(state, todo))})),
+  on(TodoActions.FilterTodos, (state, {showAll}) => ({...state, showAll: showAll}))
 );
 
 const patchTodo = (state: TodoState, updatedTodo: TodoType): TodoType[] => {

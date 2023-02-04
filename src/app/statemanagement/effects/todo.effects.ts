@@ -4,7 +4,14 @@ import {AppState} from '../app-state';
 import {Store} from '@ngrx/store';
 import {TodoService} from '../../todo/services/todo.service';
 import {catchError, exhaustMap, map, of} from 'rxjs';
-import {CompleteTodo, LoadTodos, LoadTodosFailure, PatchTodo, SetTodos} from '../actions/todo.actions';
+import {
+  CompleteTodo,
+  LoadIncompleteTodos,
+  LoadTodos,
+  LoadTodosFailure,
+  PatchTodo,
+  SetTodos
+} from '../actions/todo.actions';
 
 @Injectable()
 export class TodoEffects {
@@ -18,6 +25,17 @@ export class TodoEffects {
   todos$ = createEffect(() => this.actions.pipe(
     ofType(LoadTodos),
     exhaustMap(action => this.todoService.loadTodos().pipe(
+        map(todos => SetTodos({todos}))
+      )
+    ),
+    catchError(err => of(LoadTodosFailure({error: err.msg})))
+  ))
+
+
+  // @ts-ignore
+  incompleteTodos$ = createEffect(() => this.actions.pipe(
+    ofType(LoadIncompleteTodos),
+    exhaustMap(action => this.todoService.loadIncompleteTodos().pipe(
         map(todos => SetTodos({todos}))
       )
     ),

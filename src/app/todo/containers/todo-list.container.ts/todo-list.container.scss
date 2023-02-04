@@ -1,0 +1,14 @@
+app-todo-table {
+  width: 75%;
+}
+
+app-todo-filter {
+  width: 20%;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin: 0 10px;
+}

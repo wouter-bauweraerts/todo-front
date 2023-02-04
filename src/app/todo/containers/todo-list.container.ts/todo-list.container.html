@@ -1,4 +1,10 @@
-<app-todo-table *ngIf="!!ds$"
-                [ds]="ds$ | async"
-                (complete)="onComplete($event)">
-</app-todo-table>
+<div class="flex-container">
+  <app-todo-filter [showAll]="showAll$ | async"
+                   (onShowAll)="showAllTodos($event)"
+  >
+  </app-todo-filter>
+  <app-todo-table *ngIf="!!ds$"
+                  [ds]="ds$ | async"
+                  (complete)="onComplete($event)">
+  </app-todo-table>
+</div>

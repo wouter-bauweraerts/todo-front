@@ -1,0 +1,8 @@
+<mat-radio-group class="filter-radio-group mat-elevation-z8"
+                 aria-label="Show all todo's filter"
+                 name="todoCompletedFilter"
+                 [(ngModel)]="showAll"
+                 (change)="onCompleteFilter($event)">
+  <mat-radio-button class="filter-radio-button" [value]="true">Show all</mat-radio-button>
+  <mat-radio-button class="filter-radio-button" [value]="false">Show incomplete</mat-radio-button>
+</mat-radio-group>

@@ -1,7 +1,8 @@
 import {TodoType} from '../types/todo/todo.type';
 
 export type TodoState = {
-  todos: TodoType[]
+  todos: TodoType[],
+  showAll: boolean
 }
 
 export type AppState = {

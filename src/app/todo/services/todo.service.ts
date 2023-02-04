@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {TodoType} from '../../types/todo/todo.type';
-import {TodoSandbox} from '../sandboxes/todo.sandbox';
 
 @Injectable()
 export class TodoService {
@@ -14,5 +13,9 @@ export class TodoService {
 
   public completeTodo(todoId: number): Observable<TodoType> {
     return this.http.put<TodoType>(`/api/todo/complete/${todoId}`, {});
+  }
+
+  public loadIncompleteTodos(): Observable<TodoType[]> {
+    return this.http.get<TodoType[]>('/api/todo/incomplete');
   }
 }

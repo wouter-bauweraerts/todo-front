@@ -14,11 +14,14 @@ import {FormsModule} from '@angular/forms';
 import {EditTodoComponent} from './components/edit-todo/edit-todo.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import {TodoContainer} from './containers/todo-container/todo.container';
+import {RouterModule} from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
+    TodoContainer,
     TodoListContainer,
     TodoTableComponent,
     TodoFilterComponent,
@@ -33,14 +36,16 @@ import {MatInputModule} from '@angular/material/input';
     MatRadioModule,
     FormsModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule
   ],
   providers: [
     TodoSandbox,
     TodoService
   ],
   exports: [
-    TodoListContainer
+    TodoListContainer,
+    TodoContainer
   ]
 })
 export class TodoModule { }

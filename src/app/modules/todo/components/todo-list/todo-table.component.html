@@ -24,6 +24,9 @@
       <button mat-icon-button aria-label="edit-description" (click)="edit.next(todo)">
         <mat-icon color="primary">edit</mat-icon>
       </button>
+      <button mat-icon-button aria-label="edit-description" [routerLink]="[todo.todoId]">
+        <mat-icon color="primary">zoom_in</mat-icon>
+      </button>
       <span class="description-text">{{todo.description}}</span>
     </td>
   </ng-container>

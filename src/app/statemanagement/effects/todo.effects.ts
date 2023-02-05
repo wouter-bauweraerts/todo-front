@@ -12,6 +12,8 @@ import {
   PatchTodo,
   SetTodos, UpdateTodo, CreateTodo
 } from '../actions/todo.actions';
+import {SetException} from '../actions/core.actions';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class TodoEffects {
@@ -28,7 +30,9 @@ export class TodoEffects {
         map(todos => SetTodos({todos}))
       )
     ),
-    catchError(err => of(TodoFailure({error: err.msg})))
+    catchError((err: HttpErrorResponse) => {
+      return of(TodoFailure({status: err.status, error: err.error.msg}))
+    })
   ))
 
 
@@ -39,7 +43,9 @@ export class TodoEffects {
         map(todos => SetTodos({todos}))
       )
     ),
-    catchError(err => of(TodoFailure({error: err.msg})))
+    catchError((err: HttpErrorResponse) => {
+      return of(TodoFailure({status: err.status, error: err.error.msg}))
+    })
   ))
 
   // @ts-ignore
@@ -47,7 +53,10 @@ export class TodoEffects {
     ofType(CompleteTodo),
     exhaustMap(action => this.todoService.completeTodo(action.todoId).pipe(
       map(todo => PatchTodo({todo}))
-    ))
+    )),
+    catchError((err: HttpErrorResponse) => {
+      return of(TodoFailure({status: err.status, error: err.error.msg}))
+    })
   ))
 
   // @ts-ignore
@@ -56,7 +65,9 @@ export class TodoEffects {
     exhaustMap(action => this.todoService.updateTodo(action.todoId, action.description).pipe(
       map(todo => PatchTodo({todo}))
     )),
-    catchError(err => of(TodoFailure({error: err.msg})))
+    catchError((err: HttpErrorResponse) => {
+      return of(TodoFailure({status: err.status, error: err.error.msg}))
+    })
   ))
 
   // @ts-ignore
@@ -65,6 +76,13 @@ export class TodoEffects {
     exhaustMap(action => this.todoService.createTodo(action.description).pipe(
       map(todo => PatchTodo({todo}))
     )),
-    catchError(err => of(TodoFailure({error: err.msg})))
+    catchError((err: HttpErrorResponse) => {
+      return of(TodoFailure({status: err.status, error: err.error.msg}))
+    })
+  ))
+
+  handleError$ = createEffect(() => this.actions.pipe(
+    ofType(TodoFailure),
+    map(failure => SetException({...failure}))
   ))
 }

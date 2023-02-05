@@ -17,7 +17,7 @@ export const SetTodos = createAction(
 
 export const TodoFailure = createAction(
   '[TODO]: Operation failed',
-  props<{error: HttpErrorResponse}>()
+  props<{status: number, error: string}>()
 )
 
 export const CompleteTodo = createAction(

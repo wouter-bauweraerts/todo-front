@@ -12,6 +12,7 @@ import {TodoEffects} from './statemanagement/effects/todo.effects';
 import {HttpClientModule} from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {MatIconModule} from '@angular/material/icon';
+import {CoreModule} from './modules/core/core.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CoreModule,
     TodoModule,
     StoreModule.forRoot(undefined, {
       initialState,

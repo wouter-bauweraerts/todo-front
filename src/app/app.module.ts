@@ -1,4 +1,4 @@
-import {NgModule, isDevMode} from '@angular/core';
+import {isDevMode, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -10,7 +10,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {initialState, reducerFactory} from './statemanagement/reducers/reducers';
 import {TodoEffects} from './statemanagement/effects/todo.effects';
 import {HttpClientModule} from '@angular/common/http';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {MatIconModule} from '@angular/material/icon';
 import {CoreModule} from './modules/core/core.module';
 

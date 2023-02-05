@@ -1,4 +1,6 @@
 <app-todo-detail [todo]="todo$ | async"
+                 (editTodo)="edit($event)"
+                 (complete)="complete($event)"
 ></app-todo-detail>
 <button mat-fab
         color="primary"

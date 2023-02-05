@@ -30,11 +30,9 @@ export class TodoListContainer implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.push(this.showAll$.subscribe(showAll => {
-      console.log(`Fetching todos. Show all? ${showAll}`)
       if (showAll) {
         this.todoSb.fetchTodos();
       } else {
-        console.log('Fetch incomplete!')
         this.todoSb.fetchIncompleteTodos();
       }
     }));

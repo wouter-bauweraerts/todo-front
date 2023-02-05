@@ -19,14 +19,3 @@ export const coreReducer = createReducer(
     })
   )
 )
-
-export const setException = (error: {status: number, msg: string}): ErrorType => {
-  console.log(JSON.stringify(error))
-  let err = {
-    status: error.status,
-    msg: error.msg
-  }
-
-  console.log(JSON.stringify(err))
-  return err;
-}

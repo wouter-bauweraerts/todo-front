@@ -2,6 +2,7 @@ import {TodoState} from '../app-state';
 import {createReducer, on} from '@ngrx/store';
 import * as TodoActions from '../actions/todo.actions';
 import {TodoType} from '../../types/todo/todo.type';
+import {core} from '@angular/compiler';
 
 export const initialState: TodoState = {
   todos: [],
@@ -15,7 +16,8 @@ export const todoReducer = createReducer(
   on(TodoActions.SetTodo, (state, {todo}) => ({...state, selected: todo})),
   on(TodoActions.PatchTodo, (state, {todo}) => ({...state, todos: sort(patchTodo(state, todo))})),
   on(TodoActions.FilterTodos, (state, {showAll}) => ({...state, showAll: showAll})),
-  on(TodoActions.ClearTodo, state => ({...state, selected: undefined}))
+  on(TodoActions.ClearTodo, state => ({...state, selected: undefined})),
+  on(TodoActions.PatchSelected, (state, {todo}) => patchSelected(state, todo))
 );
 
 const patchTodo = (state: TodoState, updatedTodo: TodoType): TodoType[] => {
@@ -23,6 +25,17 @@ const patchTodo = (state: TodoState, updatedTodo: TodoType): TodoType[] => {
   todos.push(updatedTodo);
 
   return todos;
+}
+
+const patchSelected = (state: TodoState, updatedTodo: TodoType): TodoState => {
+  if (!!state.selected) {
+    return {
+      ...state,
+      selected: updatedTodo
+    }
+  } else {
+    return state;
+  }
 }
 
 const sort = (todos: TodoType[]): TodoType[] => {

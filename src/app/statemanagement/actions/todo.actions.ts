@@ -43,6 +43,11 @@ export const PatchTodo = createAction(
   props<{todo: TodoType}>()
 )
 
+export const PatchSelected = createAction(
+  '[TODO]: Patch selected todo',
+  props<{todo: TodoType}>()
+)
+
 export const FilterTodos = createAction(
   '[TODO]: Filter todos',
   props<{showAll: boolean}>()

@@ -30,4 +30,11 @@ export class TodoContainer implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe())
   }
 
+  edit(todo: TodoType) {
+    this.todoSb.updateTodo(todo)
+  }
+
+  complete(todoId: number) {
+    this.todoSb.completeTodo(todoId)
+  }
 }

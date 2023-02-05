@@ -3,14 +3,14 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {AppState} from '../app-state';
 import {Store} from '@ngrx/store';
 import {TodoService} from '../../modules/todo/services/todo.service';
-import {catchError, exhaustMap, map, of} from 'rxjs';
+import {catchError, exhaustMap, map, of, switchMap} from 'rxjs';
 import {
   CompleteTodo,
   LoadIncompleteTodos,
   LoadTodos,
   TodoFailure,
   PatchTodo,
-  SetTodos, UpdateTodo, CreateTodo, LoadTodo, SetTodo
+  SetTodos, UpdateTodo, CreateTodo, LoadTodo, SetTodo, PatchSelected
 } from '../actions/todo.actions';
 import {SetException} from '../actions/core.actions';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -64,7 +64,10 @@ export class TodoEffects {
   completeTodo$ = createEffect(() => this.actions.pipe(
     ofType(CompleteTodo),
     exhaustMap(action => this.todoService.completeTodo(action.todoId).pipe(
-      map(todo => PatchTodo({todo}))
+      switchMap(todo => of(
+        PatchTodo({todo}),
+        PatchSelected({todo})
+      ))
     )),
     catchError((err: HttpErrorResponse) => {
       return of(TodoFailure({status: err.status, error: err.error.msg}))
@@ -75,7 +78,10 @@ export class TodoEffects {
   updateTodo$ = createEffect(() => this.actions.pipe(
     ofType(UpdateTodo),
     exhaustMap(action => this.todoService.updateTodo(action.todoId, action.description).pipe(
-      map(todo => PatchTodo({todo}))
+      switchMap(todo => of(
+        PatchTodo({todo}),
+        PatchSelected({todo})
+      ))
     )),
     catchError((err: HttpErrorResponse) => {
       return of(TodoFailure({status: err.status, error: err.error.msg}))

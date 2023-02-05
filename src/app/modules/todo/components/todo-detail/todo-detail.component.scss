@@ -1,0 +1,53 @@
+.mat-mdc-card {
+  margin: auto;
+  width: 90vw;
+
+  @media screen and (min-width: 1000px) {
+    width: 50vw;
+  }
+}
+
+.mat-mdc-card-header {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.mat-mdc-form-field {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.completed {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: start;
+  margin: 0;
+
+  label {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  mat-icon {
+    &.icon-red {
+      color: red;
+    }
+
+    &.icon-green {
+      color: green;
+    }
+  }
+}
+
+.mat-mdc-card-actions {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+
+  .mdc-button {
+    margin-right: 1rem;
+  }
+}

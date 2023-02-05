@@ -1,1 +1,10 @@
-<h1> Todo Container works! </h1>
+<app-todo-detail [todo]="todo$ | async"
+></app-todo-detail>
+<button mat-fab
+        color="primary"
+        id="btn-home"
+        class="btn-fab"
+        [routerLink]="'/'"
+>
+  <mat-icon>home</mat-icon>
+</button>

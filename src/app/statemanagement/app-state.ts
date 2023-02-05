@@ -3,7 +3,8 @@ import {ErrorType} from '../types/core/error.type';
 
 export type TodoState = {
   todos: TodoType[],
-  showAll: boolean
+  showAll: boolean,
+  selected: TodoType
 }
 
 export type CoreState = {

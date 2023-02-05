@@ -16,6 +16,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {TodoContainer} from './containers/todo-container/todo.container';
 import {RouterModule} from '@angular/router';
+import {TodoDetailComponent} from './components/todo-detail/todo-detail.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
@@ -25,7 +28,8 @@ import {RouterModule} from '@angular/router';
     TodoListContainer,
     TodoTableComponent,
     TodoFilterComponent,
-    EditTodoComponent
+    EditTodoComponent,
+    TodoDetailComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +41,9 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     MatDialogModule,
     MatInputModule,
-    RouterModule
+    RouterModule,
+    MatCardModule,
+    MatButtonToggleModule
   ],
   providers: [
     TodoSandbox,

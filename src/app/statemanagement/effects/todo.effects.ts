@@ -10,7 +10,7 @@ import {
   LoadTodos,
   TodoFailure,
   PatchTodo,
-  SetTodos, UpdateTodo, CreateTodo
+  SetTodos, UpdateTodo, CreateTodo, LoadTodo, SetTodo
 } from '../actions/todo.actions';
 import {SetException} from '../actions/core.actions';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -22,6 +22,18 @@ export class TodoEffects {
               private todoService: TodoService
   ) {
   }
+
+  // @ts-ignore
+  todo$ = createEffect(() => this.actions.pipe(
+    ofType(LoadTodo),
+    exhaustMap(action => this.todoService.loadTodo(action.todoId).pipe(
+        map(todo => SetTodo({todo}))
+      )
+    ),
+    catchError((err: HttpErrorResponse) => {
+      return of(TodoFailure({status: err.status, error: err.error.msg}))
+    })
+  ))
 
   // @ts-ignore
   todos$ = createEffect(() => this.actions.pipe(

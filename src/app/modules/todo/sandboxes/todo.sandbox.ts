@@ -3,9 +3,10 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../statemanagement/app-state';
 import {
+  ClearTodo,
   CompleteTodo, CreateTodo,
   FilterTodos,
-  LoadIncompleteTodos,
+  LoadIncompleteTodos, LoadTodo,
   LoadTodos,
   UpdateTodo
 } from '../../../statemanagement/actions/todo.actions';
@@ -14,6 +15,7 @@ import {TodoType} from '../../../types/todo/todo.type';
 @Injectable()
 export class TodoSandbox {
 
+  public readonly selectedTodo$: Observable<TodoType> = this.store.select(state => state.todo.selected);
   public readonly todos$: Observable<TodoType[]> = this.store.select(state => state.todo.todos);
   public readonly showAll$: Observable<boolean> = this.store.select(state => state.todo.showAll);
 
@@ -40,8 +42,15 @@ export class TodoSandbox {
     this.store.dispatch(UpdateTodo({todoId: todo.todoId, description: todo.description}));
   }
 
-
   addTodo(todo: TodoType) {
     this.store.dispatch(CreateTodo({description: todo.description}))
+  }
+
+  fetchTodo(todoId: number) {
+    this.store.dispatch(LoadTodo({todoId}))
+  }
+
+  clearTodo() {
+    this.store.dispatch(ClearTodo())
   }
 }

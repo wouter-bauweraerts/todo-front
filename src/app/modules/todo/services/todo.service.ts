@@ -8,6 +8,10 @@ export class TodoService {
   constructor(private http: HttpClient) {
   }
 
+  public loadTodo(todoId: number): Observable<TodoType> {
+    return this.http.get<TodoType>(`/api/todo/${todoId}`);
+  }
+
   public loadTodos(): Observable<TodoType[]> {
     return this.http.get<TodoType[]>('/api/todo');
   }

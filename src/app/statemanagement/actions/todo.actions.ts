@@ -1,6 +1,10 @@
 import {createAction, props} from '@ngrx/store';
-import {HttpErrorResponse} from '@angular/common/http';
 import {TodoType} from '../../types/todo/todo.type';
+
+export const LoadTodo = createAction(
+  '[TODO]: Load Todo',
+  props<{todoId: number}>()
+)
 
 export const LoadTodos = createAction(
   '[TODO] Load todos'
@@ -14,6 +18,15 @@ export const SetTodos = createAction(
   '[TODO]: Set todos',
   props<{todos: TodoType[]}>()
 );
+
+export const SetTodo =  createAction(
+  '[TODO] Set selected todo',
+  props<{todo: TodoType}>()
+)
+
+export const ClearTodo = createAction(
+  '[TODO] Clear selected todo',
+)
 
 export const TodoFailure = createAction(
   '[TODO]: Operation failed',

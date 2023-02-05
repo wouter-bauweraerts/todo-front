@@ -1,8 +1,4 @@
-#add-task-btn {
-  right: 1rem;
-  bottom: 1rem;
-  position: fixed;
-}
+@import "../../../../../assets/common.scss";
 
 @media only screen and (min-width: 850px) {
   app-todo-table {
@@ -19,12 +15,6 @@
     align-items: stretch;
     margin: 0 10px;
   }
-
-  //#add-task-btn {
-  //  right: 1rem;
-  //  bottom: 1rem;
-  //  position: absolute;
-  //}
 }
 
 

@@ -1,15 +1,15 @@
-<h1 mat-dialog-title>{{dialog.window.title}}</h1>
+<h1 mat-dialog-title data-testid="dialog-title">{{dialog.window.title}}</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
-    <input matInput [(ngModel)]="dialog.todo.description" cdkFocusInitial>
+    <input matInput [(ngModel)]="dialog.todo.description" cdkFocusInitial data-testid="todo-description">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">{{dialog.window.cancel}}</button>
+  <button mat-button (click)="onCancel()" data-testid="cancel-button">{{dialog.window.cancel}}</button>
   <button mat-button
           color="primary"
-          [mat-dialog-close]="dialog.todo">
-    {{dialog.window.confirm}}
-  </button>
+          [mat-dialog-close]="dialog.todo"
+          data-testid="confirm-button"
+  >{{dialog.window.confirm}}</button>
 </div>

@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CoreSandbox} from './sandboxes/core.sandbox';
-import {SnackbarService} from './services/snackbar.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
@@ -9,8 +8,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSnackBarModule
   ],
   providers: [
-    CoreSandbox,
-    SnackbarService
+    CoreSandbox
   ]
 })
 export class CoreModule {

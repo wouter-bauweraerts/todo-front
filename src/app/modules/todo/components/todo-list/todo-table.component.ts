@@ -13,7 +13,7 @@ export class TodoTableComponent {
   @Input()
   public ds?: TodoDataSource | undefined | null;
   @Output()
-  complete = new EventEmitter<number>();
+  completeTodo = new EventEmitter<number>();
   @Output()
-  edit = new EventEmitter<TodoType>();
+  editTodo = new EventEmitter<TodoType>();
 }

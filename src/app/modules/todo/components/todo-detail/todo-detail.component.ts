@@ -14,11 +14,11 @@ export class TodoDetailComponent implements OnInit, OnChanges {
   @Output()
   editTodo = new EventEmitter<TodoType>();
   @Output()
-  complete = new EventEmitter<number>();
+  completeTodo = new EventEmitter<number>();
 
   detailForm: FormGroup;
   readonly floatLabel = 'auto' as FloatLabelType
-  locked: boolean = true
+  locked = true
 
   constructor(private fb: FormBuilder) {
   }
@@ -27,12 +27,13 @@ export class TodoDetailComponent implements OnInit, OnChanges {
     this.buildForm();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ngOnChanges(changes: SimpleChanges): void {
     this.buildForm()
   }
 
   private buildForm() {
-    if (!!this.todo) {
+    if (this.todo) {
       this.detailForm = this.fb.group({
         description: [
           `${this.todo.description}`, {}

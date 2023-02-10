@@ -6,10 +6,10 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-todo',
-  templateUrl: './todo.container.html',
-  styleUrls: ['./todo.container.scss']
+  templateUrl: './todo-container.component.html',
+  styleUrls: ['./todo-container.component.scss']
 })
-export class TodoContainer implements OnInit, OnDestroy {
+export class TodoContainerComponent implements OnInit, OnDestroy {
 
   public readonly todo$: Observable<TodoType> = this.todoSb.selectedTodo$;
   private subscriptions: Subscription[] = [];

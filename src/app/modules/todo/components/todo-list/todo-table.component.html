@@ -12,7 +12,7 @@
               [id]="'btn-complete-todo-' + todo.todoId"
               *ngIf="!todo.complete"
               color="warn"
-              (click)="complete.next(todo.todoId)">
+              (click)="completeTodo.next(todo.todoId)">
         <mat-icon class="material-symbols-rounded" aria-hidden="true">ads_click</mat-icon>
         <span>Complete</span>
       </button>
@@ -21,7 +21,7 @@
   <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef>Description</th>
     <td mat-cell *matCellDef="let todo" class="table-row">
-      <button mat-icon-button aria-label="edit-description" (click)="edit.next(todo)">
+      <button mat-icon-button aria-label="edit-description" (click)="editTodo.next(todo)">
         <mat-icon color="primary">edit</mat-icon>
       </button>
       <button mat-icon-button aria-label="edit-description" [routerLink]="[todo.todoId]">

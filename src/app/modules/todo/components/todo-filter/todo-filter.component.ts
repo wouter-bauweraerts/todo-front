@@ -8,11 +8,11 @@ import {MatRadioChange} from '@angular/material/radio';
 })
 export class TodoFilterComponent {
   @Input()
-  showAll: boolean = true;
+  showAll = true;
   @Output()
-  onShowAll: EventEmitter<boolean> = new EventEmitter<boolean>();
+  changeShowAll: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   onCompleteFilter(radio: MatRadioChange) {
-    this.onShowAll.next(radio.value as boolean);
+    this.changeShowAll.next(radio.value as boolean);
   }
 }

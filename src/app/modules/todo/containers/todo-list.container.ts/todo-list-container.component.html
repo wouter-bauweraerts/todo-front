@@ -1,12 +1,12 @@
 <div class="flex-container">
   <app-todo-filter [showAll]="showAll$ | async"
-                   (onShowAll)="showAllTodos($event)"
+                   (changeShowAll)="showAllTodos($event)"
   >
   </app-todo-filter>
   <app-todo-table *ngIf="!!ds$"
                   [ds]="ds$ | async"
-                  (edit)="onEdit($event)"
-                  (complete)="onComplete($event)">
+                  (editTodo)="onEdit($event)"
+                  (completeTodo)="onComplete($event)">
   </app-todo-table>
   <button mat-fab
           color="primary"

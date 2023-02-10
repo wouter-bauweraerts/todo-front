@@ -2,7 +2,6 @@ import {TodoState} from '../app-state';
 import {createReducer, on} from '@ngrx/store';
 import * as TodoActions from '../actions/todo.actions';
 import {TodoType} from '../../types/todo/todo.type';
-import {core} from '@angular/compiler';
 
 export const initialState: TodoState = {
   todos: [],
@@ -28,7 +27,7 @@ const patchTodo = (state: TodoState, updatedTodo: TodoType): TodoType[] => {
 }
 
 const patchSelected = (state: TodoState, updatedTodo: TodoType): TodoState => {
-  if (!!state.selected) {
+  if (state.selected) {
     return {
       ...state,
       selected: updatedTodo

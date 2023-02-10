@@ -8,10 +8,10 @@ import {EditTodoComponent} from '../../components/edit-todo/edit-todo.component'
 
 @Component({
   selector: 'app-todo-list',
-  templateUrl: './todo-list.container.html',
-  styleUrls: ['./todo-list.container.scss']
+  templateUrl: './todo-list-container.component.html',
+  styleUrls: ['./todo-list-container.component.scss']
 })
-export class TodoListContainer implements OnInit, OnDestroy {
+export class TodoListContainerComponent implements OnInit, OnDestroy {
   public readonly showAll$: Observable<boolean> = this.todoSb.showAll$;
   public readonly ds$: Observable<TodoDataSource> = this.todoSb.todos$.pipe(
     map(todos => {
@@ -58,7 +58,7 @@ export class TodoListContainer implements OnInit, OnDestroy {
     );
 
     this.subscriptions.push(editDialog.afterClosed().subscribe(todo => {
-      if (!!todo) {
+      if (todo) {
         this.todoSb.updateTodo(todo)
       }
     }));
@@ -92,7 +92,7 @@ export class TodoListContainer implements OnInit, OnDestroy {
     );
 
     this.subscriptions.push(addTodoDialog.afterClosed().subscribe(todo => {
-      if (!!todo) {
+      if (todo) {
         this.todoSb.addTodo(todo)
       }
     }));

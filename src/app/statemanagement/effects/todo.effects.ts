@@ -23,7 +23,6 @@ export class TodoEffects {
   ) {
   }
 
-  // @ts-ignore
   todo$ = createEffect(() => this.actions.pipe(
     ofType(LoadTodo),
     exhaustMap(action => this.todoService.loadTodo(action.todoId).pipe(
@@ -35,10 +34,9 @@ export class TodoEffects {
     })
   ))
 
-  // @ts-ignore
   todos$ = createEffect(() => this.actions.pipe(
     ofType(LoadTodos),
-    exhaustMap(action => this.todoService.loadTodos().pipe(
+    exhaustMap(() => this.todoService.loadTodos().pipe(
         map(todos => SetTodos({todos}))
       )
     ),
@@ -48,10 +46,9 @@ export class TodoEffects {
   ))
 
 
-  // @ts-ignore
   incompleteTodos$ = createEffect(() => this.actions.pipe(
     ofType(LoadIncompleteTodos),
-    exhaustMap(action => this.todoService.loadIncompleteTodos().pipe(
+    exhaustMap(() => this.todoService.loadIncompleteTodos().pipe(
         map(todos => SetTodos({todos}))
       )
     ),
@@ -60,7 +57,6 @@ export class TodoEffects {
     })
   ))
 
-  // @ts-ignore
   completeTodo$ = createEffect(() => this.actions.pipe(
     ofType(CompleteTodo),
     exhaustMap(action => this.todoService.completeTodo(action.todoId).pipe(
@@ -74,7 +70,6 @@ export class TodoEffects {
     })
   ))
 
-  // @ts-ignore
   updateTodo$ = createEffect(() => this.actions.pipe(
     ofType(UpdateTodo),
     exhaustMap(action => this.todoService.updateTodo(action.todoId, action.description).pipe(
@@ -88,7 +83,6 @@ export class TodoEffects {
     })
   ))
 
-  // @ts-ignore
   createTodo$ = createEffect(() => this.actions.pipe(
     ofType(CreateTodo),
     exhaustMap(action => this.todoService.createTodo(action.description).pipe(

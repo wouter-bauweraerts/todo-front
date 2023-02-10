@@ -1,10 +1,6 @@
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TodoTableComponent } from './todo-table.component';
-import {TodoType} from '../../../../types/todo/todo.type';
-import {TodoDataSource} from '../../../../types/todo/todo-datasource.type';
-import {By} from '@angular/platform-browser';
-import {todoReducer} from '../../../../statemanagement/reducers/todo.reducer';
+import {TodoTableComponent} from './todo-table.component';
 
 describe('TodoTableComponent', () => {
   let component: TodoTableComponent;

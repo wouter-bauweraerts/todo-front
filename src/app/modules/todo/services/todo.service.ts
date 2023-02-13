@@ -10,7 +10,6 @@ export class TodoService {
   }
 
   public loadTodo(todoId: number): Observable<TodoType> {
-    console.log(`Fetching ${todoId}`)
     return this.http.get<TodoType>(`/api/todo/${todoId}`);
   }
 

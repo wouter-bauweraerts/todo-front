@@ -3,6 +3,6 @@
                  name="todoCompletedFilter"
                  [(ngModel)]="showAll"
                  (change)="onCompleteFilter($event)">
-  <mat-radio-button class="filter-radio-button" [value]="true">Show all</mat-radio-button>
-  <mat-radio-button class="filter-radio-button" [value]="false">Show incomplete</mat-radio-button>
+  <mat-radio-button id="radio-all" class="filter-radio-button" [value]="true">Show all</mat-radio-button>
+  <mat-radio-button id="radio-incomplete" class="filter-radio-button" [value]="false">Show incomplete</mat-radio-button>
 </mat-radio-group>

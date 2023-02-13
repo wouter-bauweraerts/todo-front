@@ -9,7 +9,6 @@ import {TodoType} from '../../../../types/todo/todo.type';
 })
 export class TodoTableComponent {
 
-
   @Input()
   public ds?: TodoDataSource | undefined | null;
   @Output()

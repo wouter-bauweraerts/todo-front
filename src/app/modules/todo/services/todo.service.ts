@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {TodoType} from '../../../types/todo/todo.type';
+import * as http from 'http';
 
 @Injectable()
 export class TodoService {
@@ -9,6 +10,7 @@ export class TodoService {
   }
 
   public loadTodo(todoId: number): Observable<TodoType> {
+    console.log(`Fetching ${todoId}`)
     return this.http.get<TodoType>(`/api/todo/${todoId}`);
   }
 

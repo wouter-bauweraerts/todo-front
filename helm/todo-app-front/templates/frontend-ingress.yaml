@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: todo-app-front-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /todo-front
+    nginx.ingress.kubernetes.io/rewrite-target: /
     
 spec:
   rules:

@@ -3,13 +3,13 @@ kind: Ingress
 metadata:
   name: todo-app-front-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /todo-front
     
 spec:
   rules:
     - http:
         paths:
-          - path: /todo-front
+          - path: /
             pathType: Prefix
             backend:
               service:

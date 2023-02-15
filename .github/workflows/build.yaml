@@ -1,0 +1,26 @@
+name: build-todo-app-front
+
+on:
+  push:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build docker container
+        run: docker build . -t localhost:32000/todo-front:${{ github.run_number }}
+      - name: Publish docker container
+        run: docker push localhost:32000/todo-front:${{ github.run_number }}
+
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - name: publish to local k8s cluster
+        working-directory: helm/
+        run: helm upgrade -i todo-app-front --set todoAppFront.image=localhost:32000/todo-front:${{ github.run_number }} -n todo-app-front --create-namespace todo-app-front/

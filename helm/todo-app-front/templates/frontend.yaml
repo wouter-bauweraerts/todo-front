@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "todo-app-front"
+spec:
+  selector:
+    matchLabels:
+      app: serviceTodoAppFront
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: serviceTodoAppFront
+    spec:
+      containers:
+        - image: {{ .Values.todoAppFront.image }}
+          imagePullPolicy: Always
+          name: "todofront"
+          ports:
+            - containerPort: 80
+              protocol: TCP

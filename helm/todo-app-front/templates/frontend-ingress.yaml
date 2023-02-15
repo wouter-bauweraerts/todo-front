@@ -15,4 +15,4 @@ spec:
               service:
                 name: service-todo-app-front
                 port:
-                  number: {{ .Values.todoAppFront.port }}
+                  number: 80

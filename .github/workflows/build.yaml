@@ -23,4 +23,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: publish to local k8s cluster
         working-directory: helm/
-        run: helm upgrade -i todo-app-front --set todoAppApi.image=localhost:32000/todo-front:${{ github.run_number }} -n todo-app-front --create-namespace todo-app-front/
+        run: helm upgrade -i todo-app-front --set todoAppFront.image=localhost:32000/todo-front:${{ github.run_number }} -n todo-app-front --create-namespace todo-app-front/
